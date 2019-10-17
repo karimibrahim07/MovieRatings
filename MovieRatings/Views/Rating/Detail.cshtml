@@ -1,0 +1,47 @@
+﻿@using MovieRatingsDB;
+@model Rating
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Detail</h2>
+@{
+    List<Rating> Ratings = ViewBag.Movies;
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MovieTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MovieReleaseDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Ratings)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.)
+            </td>
+            <td>
+                <a href="@Url.Action("Detail", "Rating",new { id=item.MovieId })">@Html.DisplayFor(modelItem => item.MovieTitle)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovieReleaseDate)
+            </td>
+        </tr>
+    }
+
+
+</table>
+
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
